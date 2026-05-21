@@ -72,3 +72,4 @@ def parse_and_save_cities(url=None, output_path=CITIES_FILE):
 
 if __name__ == '__main__':
     all_cities = load_cities()
+
