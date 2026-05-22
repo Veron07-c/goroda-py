@@ -2,21 +2,18 @@ def validate_player_move(user_input, current_letter, all_cities, used_cities):
     city = user_input.strip().lower()  # нормализация данных ввода
 
     if not city:  # пустой ввод
-        return False, "Ошибка: введите название города", None
+        return False, "введите название города"
 
     if len(city) < 2:  # проверка на короткое название
-        return False, "Ошибка: название слишком короткое", None
-
-    if city == "выход":  # проверка на выход из игры
-        return False, "Игра завершена", None
+        return False, "название слишком короткое"
 
     if city[0] != current_letter:  # проверка первой буквы
-        return False, f"Ошибка: нужна буква '{current_letter.upper()}'", None
+        return False, f"нужна буква '{current_letter.upper()}'"
 
     if city not in all_cities:  # наличие в базе городов
-        return False, "Ошибка: город не найден в базе", None
+        return False, "город не найден в базе"
 
     if city in used_cities:  # повторное использование названия
-        return False, "Ошибка: город уже называли", None
+        return False, "город уже называли"
 
-    return True, city, None  # проверка пройдена
+    return True, city # проверка пройдена
