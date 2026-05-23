@@ -26,6 +26,15 @@ def main():
 
     #СТАРТ игры
     while not game_over:
+        #проверка на тупик: проверяем, есть ли вообще города для игрока
+        test_move = computer_ai.get_computer_move(current_letter, all_cities, used_cities)
+
+        if test_move is None:
+            print(f"\nНа букву '{current_letter.upper()}' больше нет свободных городов в базе!")
+            print("ПОЗДРАВЛЯЕМ! Вы победили, так как городов на эту букву не осталось.")
+            game_over = True
+            continue
+
         #ход игрока
         print(f"\nВаш ход! Введите город на букву: '{current_letter.upper()}'")
         user_input = input("Вы: ")
@@ -71,8 +80,8 @@ def main():
         #расчет буквы для следующего хода игрока
         current_letter = utils.get_next_letter(comp_city)
 
-#ФИНАЛ игры
-print("Спасибо за игру! До новых встреч!")
+    #ФИНАЛ игры
+    print("Спасибо за игру! До новых встреч!")
 
 if __name__ == "__main__":
     main()
